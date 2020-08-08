@@ -20,13 +20,11 @@ handler.post(async (req, res) => {
         // classID and userID provided by request
         const data = req.body
         req.body.date = new Date();
-
         const imageupload = await cloudinary.v2.uploader.upload(req.body.file , (err, result) => { err ? console.log(err) : result});   
-        console.log(imageupload)
         const postDatabase = await req.db.collection('posts').insertOne({
              "classID": data.classID,
              "title": data.title,
-             "image": data.imageupload.url,
+             "image": imageupload.url,
              "date": data.date,
              "body": data.body,
              "userID": data.userID,
