@@ -17,4 +17,17 @@ handler.get(async (req, res) => {
     }
 })
 
+handler.post(async (req, res) => {
+    try {
+        const classID = req.query.classID.toUpperCase()
+        const userID = req.body.userID;
+        await req.db.collection('classes').findOneAndUpdate({_id: classID }, {$push: {"users": userID}})
+        await req.db.collection('users').findOneAndUpdate({_id: userID }, {$push: {"classes": classID}})
+        res.json({status: "success"})
+    } catch (e) {
+        console.log(e)
+        res.json({status: "error", e})
+    }
+})
+
 export default handler;

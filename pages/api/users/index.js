@@ -7,6 +7,7 @@ const handler = nextConnect();
 
 handler.use(mongodb)
 
+
 handler.post(async (req, res) => {
     try {
         const data = req.body;
