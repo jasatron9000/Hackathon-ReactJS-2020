@@ -1,4 +1,7 @@
-export const CourseNavigation = (school) =>{
+export const CourseNavigation = () =>{
+    let school = {
+        "courses" : ["CompSci 720", "CompSci 720", "CompSci 720", "CompSci 720"]
+    }
 
     let list = school.courses;
     const listItems = list.map((item) =>  

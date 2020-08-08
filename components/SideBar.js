@@ -1,6 +1,12 @@
+import { useFetchUser } from '../lib/user'
+import CourseNavigation from '../components/CourseNav'
+import Logging from '../components/Logging'
+
+const {user, loading} = useFetchUser({ required: true })
+
 export const SideBar = ({user}) =>{
     return(
-        <div className = "w-1/5 h-screen bg-blue-600 absolute left-0 items-center p-10">
+        <div className = "w-1/5  h-auto bg-blue-600 absolute left-0 items-center p-10">
             <div>
                 <img className = "rounded-md border-4 border-black" src = {user.picture} alt="User Picture"/>
             </div>
