@@ -1,13 +1,14 @@
 import { useFetchUser } from '../lib/user'
 import CourseNavigation from '../components/CourseNav'
+import Logging from '../components/Logging'
 
 let school = {
-    "courses" : ["A", "b", "c", "d"]
+    "courses" : ["CompSci 720", "CompSci 720", "CompSci 720", "CompSci 720"]
 }
 
 const SideBar = ({user}) =>{
     return(
-        <div className = "w-1/5 h-screen bg-gray-400 absolute left-0 items-center p-10">
+        <div className = "w-1/5 h-screen bg-blue-600 absolute left-0 items-center p-10">
             <div>
                 <img className = "rounded-md border-4 border-black" src = {user.picture} alt="User Picture"/>
             </div>
@@ -17,6 +18,9 @@ const SideBar = ({user}) =>{
             </div>
             <div> 
                 <CourseNavigation courses = {school.courses}/>
+            </div>
+            <div>
+                <Logging user={user}/>
             </div>
         </div>
     )

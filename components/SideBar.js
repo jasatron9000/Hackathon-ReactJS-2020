@@ -9,7 +9,10 @@ export const SideBar = ({user}) =>{
                 <h1 className ="text-2xl font-extrabold text-center">{user.nickname}</h1>
             </div>
             <div>
-                <CourseNavigation/>
+                <CourseNavigation  courses = {school.courses}/>
+            </div>
+            <div>
+                <Logging user={user}/>
             </div>
         </div>
     )
