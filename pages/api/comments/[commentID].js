@@ -17,7 +17,8 @@ handler.get(async (req, res) => {
 
 handler.put(async (req, res) => {
     try {
-    //    ability to edit the comment
+        await req.db.collection('comments').findOneAndUpdate({_id: ObjectId(req.query.commentID)}, {$set: { "body": data.body }})
+        res.json({status: "sucess"})
     } catch (err) {
         res.json({status: "error", err})
     }
@@ -25,9 +26,13 @@ handler.put(async (req, res) => {
 
 handler.delete(async (req, res) => {
     try {
+        const data = await req.db.collection('comments').findOne({_id: ObjectId(req.query.commentID)});
         await req.db.collection('comments').findOneAndDelete({_id: ObjectId(req.query.commentID)});
+        await req.db.collection('posts').findOneAndUpdate({_id: ObjectId(data.postID)}, {$pull: {"comments": ObjectId(req.query.commentID)}})
+        await req.db.collection('users').findOneAndUpdate({_id: data.userID}, {$pull: {"comments": ObjectId(req.query.commentID)}})
         res.json({status: "sucess"})
     } catch (err) {
+        console.log(err)
         res.json({status: "error", err})
     }
 })
