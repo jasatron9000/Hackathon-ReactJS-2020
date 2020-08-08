@@ -17,8 +17,7 @@ handler.get(async (req, res) => {
 
 handler.put(async (req, res) => {
     try {
-        const data = req.body
-        await req.db.collection('users').update({_id: req.query.userID}, {$set: data })
+        await req.db.collection('users').update({_id: req.query.userID}, {$set: req.body })
         res.json({status: "sucess"})
     } catch (err) {
         res.json({status: "error", err})
