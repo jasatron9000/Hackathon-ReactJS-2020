@@ -5,7 +5,6 @@ export const Logging = (user) =>{
             <a href='/api/logout'>
                 Logout
             </a>
-          
             ) : (
               <a href='/api/login'>
                 Login

@@ -27,7 +27,7 @@ const SideBar = ({user}) =>{
 }
 
 function SideBarTest () {
-  const { user, loading } = useFetchUser({ required: true })
+  const {user, loading} = useFetchUser({ required: true })
   return (
     <div>
       {loading ? <>Loading Sidebar...</>
