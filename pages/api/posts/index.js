@@ -1,4 +1,3 @@
-
 import nextConnect from "next-connect"
 import mongodb from "../../../middleware/database"
 
@@ -10,9 +9,8 @@ handler.get(async (req, res) => {
     try {
         const allPosts = await req.db.collection('posts').find({}).toArray();
         res.json(allPosts)
-    } catch (e) {
-        console.log(e)
-        res.json({status: "error", e})
+    } catch (err) {
+        res.json({status: "error", err})
     }
 })
 
@@ -33,9 +31,8 @@ handler.post(async (req, res) => {
         await req.db.collection('classes').findOneAndUpdate({_id: data.classID}, {$push: {"posts": postID}})
         await req.db.collection('users').findOneAndUpdate({_id: data.userID}, {$push: {"posts": postID}})
         res.json({status: "success"})
-    } catch (e) {
-        console.log(e)
-        res.json({status: "error", e})
+    } catch (err) {
+        res.json({status: "error", err})
     }
 })
 

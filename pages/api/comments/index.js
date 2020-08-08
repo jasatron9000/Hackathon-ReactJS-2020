@@ -1,4 +1,3 @@
-
 import nextConnect from "next-connect"
 import mongodb from "../../../middleware/database"
 const { ObjectId } = require('mongodb')
@@ -11,9 +10,8 @@ handler.get(async (req, res) => {
     try {
         const allComments = await req.db.collection('comments').find({}).toArray();
         res.json(allComments)
-    } catch (e) {
-        console.log(e)
-        res.json({status: "error", e})
+    } catch (err) {
+        res.json({status: "error", err})
     }
 })
 
@@ -31,13 +29,11 @@ handler.post(async (req, res) => {
             "downVotes": []
         });
         const commentID = await commentDatabase.ops[0]._id
-        console.log(commentID)
         await req.db.collection('posts').findOneAndUpdate({_id: ObjectId(data.postID)}, {$push: {"comments": commentID}})
         await req.db.collection('users').findOneAndUpdate({_id: data.userID}, {$push: {"comments": commentID}})
         res.json({status: "success"})
-    } catch (e) {
-        console.log(e)
-        res.json({status: "error", e})
+    } catch (err) {
+        res.json({status: "error", err})
     }
 })
 

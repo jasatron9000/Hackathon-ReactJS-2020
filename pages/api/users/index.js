@@ -1,12 +1,9 @@
-
 import nextConnect from "next-connect"
 import mongodb from "../../../middleware/database"
-import { Db } from "mongodb";
 
 const handler = nextConnect();
 
 handler.use(mongodb)
-
 
 handler.post(async (req, res) => {
     try {
@@ -22,9 +19,8 @@ handler.post(async (req, res) => {
             comments: []
         })
         res.json({status: "success"})
-    } catch (e) {
-        console.log(e)
-        res.json({status: "error", e})
+    } catch (err) {
+        res.json({status: "error", err})
     }
 })
 
