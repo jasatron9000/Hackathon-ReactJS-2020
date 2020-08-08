@@ -1,4 +1,4 @@
-import SubmissionForm from "../components/SubmissionFom";
+import SubmissionForm from "../ExamQPage_comps/SubmissionFom";
 
 function AddQuestion() {
   const [modalOpen, setModalOpen] = React.useState(false);
