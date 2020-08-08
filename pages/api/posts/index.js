@@ -1,5 +1,6 @@
 import nextConnect from "next-connect"
 import mongodb from "../../../middleware/database"
+const cloudinary = require('cloudinary');
 
 const handler = nextConnect();
 
@@ -19,19 +20,24 @@ handler.post(async (req, res) => {
         // classID and userID provided by request
         const data = req.body
         req.body.date = new Date();
+
+        const imageupload = await cloudinary.v2.uploader.upload(req.body.file , (err, result) => { err ? console.log(err) : result});   
+        console.log(imageupload)
         const postDatabase = await req.db.collection('posts').insertOne({
-            "classID": data.classID,
-            "title": data.title,
-            "date": data.date,
-            "body": data.body,
-            "userID": data.userID,
-            "comments": []
+             "classID": data.classID,
+             "title": data.title,
+             "image": data.imageupload.url,
+             "date": data.date,
+             "body": data.body,
+             "userID": data.userID,
+             "comments": []
         });
         const postID = await postDatabase.ops[0]._id
         await req.db.collection('classes').findOneAndUpdate({_id: data.classID}, {$push: {"posts": postID}})
         await req.db.collection('users').findOneAndUpdate({_id: data.userID}, {$push: {"posts": postID}})
         res.json({status: "success"})
     } catch (err) {
+        console.log(err)
         res.json({status: "error", err})
     }
 })
