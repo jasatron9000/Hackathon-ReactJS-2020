@@ -7,9 +7,9 @@ let school = {
 
 const SideBar = ({user}) =>{
     return(
-        <div className = "w-1/5 h-screen bg-gray-400 absolute left-0 items-center rounded-md p-8 m-2" >
+        <div className = "w-1/5 h-screen bg-gray-400 absolute left-0 items-center p-10">
             <div>
-                <img className = "rounded-md" src = {user.picture} alt="User Picture"/>
+                <img className = "rounded-md border-4 border-black" src = {user.picture} alt="User Picture"/>
             </div>
             <div>
                 <h2 className ="text-3xl font-extrabold text-center">{user.name}</h2>
