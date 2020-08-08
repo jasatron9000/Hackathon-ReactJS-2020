@@ -1,4 +1,4 @@
-import QuestionCard from "../QuestionCards";
+import QuestionCard from "./QuestionCards";
 import Grid from "@material-ui/core/Grid";
 import React, { useState, useEffect } from "react";
 

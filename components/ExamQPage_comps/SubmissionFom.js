@@ -1,7 +1,7 @@
-import QuestionCards from "../components/QuestionCards";
-import AddQuestion from "../components/AddQuestion";
+import QuestionCards from "./QuestionCards";
+import AddQuestion from "./AddQuestion";
 import { useForm } from "react-hook-form";
-import {} from "../components/MediaGrid_Comp/MediaGrid";
+import {} from "./MediaGrid";
 
 export const SubmissionForm = ({ user, children }) => {
   const { register, handleSubmit } = useForm();

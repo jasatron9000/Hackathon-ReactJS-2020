@@ -4,7 +4,7 @@ import { useFetchUser } from "../lib/user";
 import config from "../lib/config";
 import ProfileCard from "../components/ProfileCard";
 import Link from "next/link";
-import QuestionCard from "../components/QuestionCards";
+import QuestionCard from "../components/ExamQPage_comps/QuestionCards";
 const LinkA = ({ children, href }) => (
   <Link href={href}>
     <a className="pl-4 block pr-4 underline hover:text-white">{children}</a>
