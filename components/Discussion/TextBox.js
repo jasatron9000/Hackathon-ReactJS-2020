@@ -31,11 +31,11 @@ class TextBox extends React.Component{
                 <span class="m-0 p-0">
                     <span  class="inline mx-6">
                         <button class="inline">
-                            <img class="w-5 h-5" src={"./img/like.svg"}/>
+                            <img class="w-5 h-5" src={"/img/like.svg"}/>
                         </button>
                         <p class="inline mx-3">{this.props.likes}</p>
                         <button class="inline">
-                            <img class="w-5 h-5" src={"./img/dislike.svg"}/>
+                            <img class="w-5 h-5" src={"/img/dislike.svg"}/>
                         </button>
                     </span>
                     <button class="inline bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-6 float-right" onClick={this.handleSubmit}>SUBMIT</button>
