@@ -2,11 +2,8 @@ import { useFetchUser } from "../lib/user";
 import MediaGrid from "../components/ExamQPage_comps/MediaGrid";
 import AddQuestion from "../components/ExamQPage_comps/AddQuestion";
 
-function About() {
+function examq() {
   const { user, loading } = useFetchUser();
-
-  // const [modalOpen, setModalOpen] = React.useState(false);
-
   return (
     <div>
       <AddQuestion />
@@ -15,4 +12,4 @@ function About() {
   );
 }
 
-export default About;
+export default examq;
