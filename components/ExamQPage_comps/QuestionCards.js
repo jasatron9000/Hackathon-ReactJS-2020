@@ -12,7 +12,7 @@ export const QuestionCard = ({
   return (
     <div class="m-6 w-3/5">
       <CardActionArea>
-        <Link to="" style={{ textDecoration: "none" }}>
+        <Link to="/index" style={{ textDecoration: "none" }}>
           <div class="border-2 border-gray-600 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
             <div class="mb-8">
               <div class="text-gray-900 font-bold text-xl mb-2">
