@@ -4,8 +4,7 @@ import React, { useState, useEffect } from "react";
 import config from "../../lib/config";
 
 function MediaGrid(course, year) {
-  const [ItemArray, setItemArray] = useState([]);
-  //const [count, setCount] = useState(0);
+  // const [ItemArray, setItemArray] = useState([]);
 
   // useEffect(() => {
   //   fetch("https://kitsu.io/api/edge/anime?filter[text]=naruto")
@@ -18,19 +17,18 @@ function MediaGrid(course, year) {
   //     .catch(() => console.log("it didn't work"));
   // }, []);
 
-  const [classes, setClasses] = useState([]);
-  // fetch data
-  useEffect(() => {
-    const fetchClasses = async () => {
-      const res = await fetch(`${config.HOST}/api/classes/COMPSCI335`);
-      const classesJson = await res.json();
-      setClasses(classesJson);
-    };
-    fetchClasses();
-  }, []);
+  // const [classes, setClasses] = useState([]);
+  // // fetch data
+  // useEffect(() => {
+  //   const fetchClasses = async () => {
+  //     const res = await fetch(`${config.HOST}/api/classes/COMPSCI335`);
+  //     const classesJson = await res.json();
+  //     setClasses(classesJson);
+  //   };
+  //   fetchClasses();
+  // }, []);
 
   const [posts, setPosts] = useState([]);
-  // fetch data
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await fetch(`${config.HOST}/api/posts`);
