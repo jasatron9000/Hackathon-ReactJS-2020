@@ -9,7 +9,7 @@ handler.use(mongodb)
 handler.get(async (req, res) => {
     try {
         const queryPost = await req.db.collection('posts').findOne({_id: ObjectId(req.query.postID)});
-        console.log(queryPost)
+        // console.log(queryPost)
         res.json(queryPost)
     } catch (err) {
         res.json({status: "error", err})

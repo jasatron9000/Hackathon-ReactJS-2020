@@ -12,20 +12,17 @@ function Header ({ user, loading }) {
     <header className='bg-orange-300'>
       <nav className='container flex items-center justify-between flex-wrap  py-2 '>
         <div id='Brand' className='text-3xl text-black-700'>
-          WDCC Workshop Application
+          Mastering Exams
         </div>
         <ul className=' flex   '>
           <MenuItem href='/'>
               Home
           </MenuItem>
-          <MenuItem href='/about'>
-              About
-          </MenuItem>
           {!loading &&
             (user ? (
               <>
-                <MenuItem href='/reportSWR'>
-                Report
+                <MenuItem href='/dashboard'>
+                Dashboard
                 </MenuItem>
                 <MenuItem href='/api/logout'>
                 Logout
