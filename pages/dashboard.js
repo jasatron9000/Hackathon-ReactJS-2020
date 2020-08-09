@@ -6,6 +6,7 @@ import ProfileCard from '../components/ProfileCard'
 import Link from 'next/link'
 import CourseCard from '../components/CourseCard'
 import { useState, useEffect } from 'react'
+import SideBar from '../components/SideBar'
 const LinkA = ({ children, href }) =>
   <Link href={href}>
     <a className='pl-4 block pr-4 underline hover:text-white'>{children}</a>
@@ -14,9 +15,9 @@ const LinkA = ({ children, href }) =>
 
 function Dashboard () {
   // set required to true to force the page to require login.
-  
+
   //const [classes, setClasses] = useState([]);
-  
+
   const { user, loading } = useFetchUser({ required: false })
 
   const logEvent = async (type, value) => {
@@ -34,11 +35,15 @@ function Dashboard () {
     // TODO handle error if event cannot be posted.
     // TODO display feedback if event is ok
   }
-
+    let userInfo
     const [classes, setClasses] = useState([])
     // fetch data
     useEffect(() => {
       const fetchClasses = async () => {
+        const callInfo = await fetch(`http://localhost:3141/api/me`)
+        const userInfo = await callInfo.json()
+        console.log(userInfo)
+
         const res = await fetch(`${config.HOST}/api/classes`)
         const classesJson = await res.json()
         setClasses(classesJson)
@@ -51,86 +56,13 @@ function Dashboard () {
     // console.log(e.target)
     logEvent('click', 1)
   }
-     
-  const Course = {
-      "_id":"COMPSCI335",
-      "title":"Functional Programming and Distributed Services",
-      "description":"Programming introduction to distributed services and to browser based applications. Specifically, service‐oriented architectures, performance, and security. Introduction to functional programming for developing services and clients integrating data from heterogeneous local and remote sources. ",
-      "users":[
-         "github|50095198"
-      ],
-      "posts":[
-         "5f2e8434401bd296593a68a4",
-         "5f2e8454401bd296593a68a5"
-      ]
-   }
-   const Course1 = {
-      "_id":"COMPSCI335",
-      "title":"Functional Programming and Distributed Services",
-      "description":"Programming introduction to distributed services and to browser based applications. Specifically, service‐oriented architectures, performance, and security. Introduction to functional programming for developing services and clients integrating data from heterogeneous local and remote sources. ",
-      "users":[
-         "github|50095198"
-      ],
-      "posts":[
-         "5f2e8434401bd296593a68a4",
-         "5f2e8454401bd296593a68a5"
-      ]
-   }
-   const Course2 = {
-      "_id":"COMPSCI335",
-      "title":"Functional Programming and Distributed Services",
-      "description":"Programming introduction to distributed services and to browser based applications. Specifically, service‐oriented architectures, performance, and security. Introduction to functional programming for developing services and clients integrating data from heterogeneous local and remote sources. ",
-      "users":[
-         "github|50095198"
-      ],
-      "posts":[
-         "5f2e8434401bd296593a68a4",
-         "5f2e8454401bd296593a68a5"
-      ]
-   }
-   const Course3 = {
-      "_id":"COMPSCI335",
-      "title":"Functional Programming and Distributed Services",
-      "description":"Programming introduction to distributed services and to browser based applications. Specifically, service‐oriented architectures, performance, and security. Introduction to functional programming for developing services and clients integrating data from heterogeneous local and remote sources. ",
-      "users":[
-         "github|50095198"
-      ],
-      "posts":[
-         "5f2e8434401bd296593a68a4",
-         "5f2e8454401bd296593a68a5"
-      ]
-   }
-  //const Courses = [Course, Course1, Course2, Course3]
-  
-  const Courses = []
-//  const classesCall = async (classes) => {
-//    const classList = classes
-//    await fetch(`http://172.20.10.247:3141/api/classes`, {
-//      method: 'post',
-//      body: JSON.stringify(classList)
-//    })
-//
-//	return classList.json()
-//
-//    // TODO handle error if event cannot be posted.
-//    // TODO display feedback if event is ok
-//  }
 
-console.log(classes)
-console.log(setClasses)
-
-//	Courses = classes
    return (
-    <Layout user={user} loading={loading}>
-		<div className='view'>
+    <div>
+        {loading ? <>Loading Sidebar...</>:(<><SideBar user={user}/></>)}
+		<div className='view w-4/5 float-right'>
 			<div className='pageTitle'>
 				<h1 className='pageTitle'>Your Courses</h1>
-			</div>
-			<div className='center'>
-				<CourseCard course={Course}>AAA</CourseCard>
-				<CourseCard course={Course}>AAA</CourseCard>
-				<CourseCard course={Course}>AAA</CourseCard>
-				<CourseCard course={Course}>AAA</CourseCard>
 			</div>
 			<div className='center'>
 				{classes.map(cour =>(<CourseCard course={cour}>AAA</CourseCard>))}
@@ -150,7 +82,7 @@ console.log(setClasses)
 			</div>
 			
 		</div>
-    </Layout>
+    </div>
   )
 }
 
