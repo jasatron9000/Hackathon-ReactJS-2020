@@ -1,15 +1,16 @@
+import React, { Component } from 'react'
 import { useFetchUser } from "../lib/user";
 import MediaGrid from "../components/ExamQPage_comps/MediaGrid";
 import AddQuestion from "../components/ExamQPage_comps/AddQuestion";
+const { user, loading } = useFetchUser();
+export default class examq extends Component {
 
-function examq() {
-  const { user, loading } = useFetchUser();
-  return (
-    <div>
+  render() {
+    return (
+      <div>
       <AddQuestion />
       <MediaGrid />
-    </div>
-  );
-}
-
-export default examq;
+      </div>
+    )
+  }
+}a
