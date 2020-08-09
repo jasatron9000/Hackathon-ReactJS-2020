@@ -39,8 +39,8 @@ function Dashboard () {
     // fetch data
     useEffect(() => {
       const fetchClasses = async () => {
-        const res = await fetch(`http://172.20.10.247:3141/api/classes`)
-        const classesJson = res.json()
+        const res = await fetch(`${config.HOST}/api/classes`)
+        const classesJson = await res.json()
         setClasses(classesJson)
       }
       fetchClasses()
@@ -115,6 +115,9 @@ function Dashboard () {
 //    // TODO handle error if event cannot be posted.
 //    // TODO display feedback if event is ok
 //  }
+
+console.log(classes)
+console.log(setClasses)
 
 //	Courses = classes
    return (
