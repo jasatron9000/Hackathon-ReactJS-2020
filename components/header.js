@@ -18,14 +18,11 @@ function Header ({ user, loading }) {
           <MenuItem href='/'>
               Home
           </MenuItem>
-          <MenuItem href='/about'>
-              About
-          </MenuItem>
           {!loading &&
             (user ? (
               <>
-                <MenuItem href='/reportSWR'>
-                Report
+                <MenuItem href='/dashboard'>
+                Dashboard
                 </MenuItem>
                 <MenuItem href='/api/logout'>
                 Logout
